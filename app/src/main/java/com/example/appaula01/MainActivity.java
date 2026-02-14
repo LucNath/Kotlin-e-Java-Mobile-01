@@ -3,6 +3,7 @@ package com.example.appaula01;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -10,12 +11,15 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import java.util.Random;
+
 public class MainActivity extends AppCompatActivity {
 
     private Button btnFabricarPessoa;
     private TextView txtPessoa;
+    Pessoa pessoa;
+    private int idade;
 
-    int contadorDeClicks =0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,15 +35,24 @@ public class MainActivity extends AppCompatActivity {
         txtPessoa = findViewById(R.id.txtPessoa);
 
         btnFabricarPessoa.setOnClickListener(v -> {
+            Toast.makeText(
+                    this,
+                    "Botão Fabricar Pessoa Clicado",
+                    Toast.LENGTH_SHORT).show();
 
-            contadorDeClicks++;
-            txtPessoa.setText("Uma com.example.appaula01.Pessoa criada: " + contadorDeClicks);
+            pessoa = new Pessoa("Lucas", idade);
+            txtPessoa.setText(pessoa.toString());
         });
 
 
 
 
+    }
 
-
+    private static int getIdade() {
+        Random idadeAleatoria = new Random();
+        int min = 18;
+        int max = 60;
+        return idadeAleatoria.nextInt((max - min) + 1) + min;
     }
 }

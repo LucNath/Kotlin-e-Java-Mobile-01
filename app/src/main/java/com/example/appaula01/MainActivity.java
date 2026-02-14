@@ -1,7 +1,6 @@
 package com.example.appaula01;
 
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
@@ -16,6 +15,7 @@ public class MainActivity extends AppCompatActivity {
     private Button btnFabricarPessoa;
     private TextView txtPessoa;
 
+    int contadorDeClicks =0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,7 +31,9 @@ public class MainActivity extends AppCompatActivity {
         txtPessoa = findViewById(R.id.txtPessoa);
 
         btnFabricarPessoa.setOnClickListener(v -> {
-            txtPessoa.setText("Uma Pessoa criada");
+
+            contadorDeClicks++;
+            txtPessoa.setText("Uma com.example.appaula01.Pessoa criada: " + contadorDeClicks);
         });
 
 

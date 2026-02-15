@@ -40,12 +40,10 @@ public class MainActivity extends AppCompatActivity {
                     "Botão Fabricar Pessoa Clicado",
                     Toast.LENGTH_SHORT).show();
 
+            idade = getIdade();
             pessoa = new Pessoa("Lucas", idade);
             txtPessoa.setText(pessoa.toString());
         });
-
-
-
 
     }
 
@@ -53,6 +51,7 @@ public class MainActivity extends AppCompatActivity {
         Random idadeAleatoria = new Random();
         int min = 18;
         int max = 60;
-        return idadeAleatoria.nextInt((max - min) + 1) + min;
+        int idade = idadeAleatoria.nextInt((max - min) + 1) + min;
+        return idade;
     }
 }
